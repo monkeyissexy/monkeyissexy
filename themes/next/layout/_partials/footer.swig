@@ -5,6 +5,11 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">{{ config.author }}</span>
+  <span class="author" itemprop="copyrightHolder"><a href="{{config.root}}">{{ config.title }}</a></span>
+</div>
+
+<div>
+  友情链接 >> 
+  <a href="https://elephantme.github.io/" target='_blank'>Elephant Me</a>
 </div>
 
