@@ -124,7 +124,6 @@ social:
   #LinkLabel: Link
   Github: https://github.com/monkeyissexy
 
-
 # Social Links Icons
 # Icon Mapping:
 #   Map a menu item to a specific FontAwesome icon name.
@@ -177,12 +176,16 @@ sidebar:
 
 
 # Blogrolls
-#links_title: Links
+#links_title: 友情链接
 #links_layout: block
-#links_layout: inline
-#links:
-  #Title: http://example.com/
+# links_layout: inline
+#links: 
+  # Elephant Me: https://elephantme.github.io/
+  # baidu: http://baidu.com
 
+friend_link_title: 友情链接
+friend_links:
+  Elephant Me: https://elephantme.github.io/
 
 # ---------------------------------------------------------------
 # Misc Theme Settings

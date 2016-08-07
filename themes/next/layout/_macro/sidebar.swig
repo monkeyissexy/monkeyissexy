@@ -83,6 +83,17 @@
           {% endif %}
         </div>
 
+        <div class="links-of-author motion-element">
+            {% if theme.friend_links %}
+                <p class="site-author-name">{{ theme.friend_link_title }}</p>
+                {% for name, link in theme.friend_links %}
+                    <span class="links-of-author-item">
+                    <a href="{{ link }}" target="_blank">{{ name }}</a>
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
         {% set cc = {'by': 1, 'by-nc': 1, 'by-nc-nd': 1, 'by-nc-sa': 1, 'by-nd': 1, 'by-sa': 1, 'zero': 1} %}
         {% if theme.creative_commons in cc %}
           <div class="cc-license motion-element" itemprop="license">
