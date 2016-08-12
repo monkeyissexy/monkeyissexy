@@ -27,13 +27,27 @@ categories: work
 
 ```
 开发
-	/root/software/redis-3.0.7/src/redis-server	/root/software/redis-3.0.7/redis.conf  
+	/root/software/redis_ha/redis-2.8.24/src/redis-server /root/software/redis_ha/redis-2.8.24/redis_6377.conf
+	/root/software/redis_ha/redis-2.8.24/src/redis-server /root/software/redis_ha/redis-2.8.24/redis_6378.conf
+	/root/software/redis_ha/redis-2.8.24/src/redis-server /root/software/redis_ha/redis-2.8.24/redis_6379.conf
+
+	/root/software/redis_ha/redis-2.8.24/src/redis-sentinel /root/software/redis_ha/redis-2.8.24/sentinel_6377.conf
+	/root/software/redis_ha/redis-2.8.24/src/redis-sentinel /root/software/redis_ha/redis-2.8.24/sentinel_6378.conf
+	/root/software/redis_ha/redis-2.8.24/src/redis-sentinel /root/software/redis_ha/redis-2.8.24/sentinel_6379.conf
+ 
 	
 测试
-	redis-server /etc/redis.conf	
+	/data/redis_ha/redis6377/src/redis-server /data/redis_ha/redis6377/redis.conf
+	/data/redis_ha/redis6378/src/redis-server /data/redis_ha/redis6378/redis.conf
+	/data/redis_ha/redis6379/src/redis-server /data/redis_ha/redis6379/redis.conf
+
+	/data/redis_ha/redis6377/src/redis-sentinel /data/redis_ha/redis6377/sentinel.conf
+	/data/redis_ha/redis6378/src/redis-sentinel /data/redis_ha/redis6378/sentinel.conf
+	/data/redis_ha/redis6379/src/redis-sentinel /data/redis_ha/redis6379/sentinel.conf	
 	
 验证
 	telnet localhost 6379	
+	telnet localhost 26379	
 ```
  
 * kestrel

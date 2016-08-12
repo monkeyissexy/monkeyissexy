@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Redis Sentinel（一）入门"
-date:   2016-08-02 19:58:17 +0800
+date:   2016-08-10 20:10:17 +0800
 categories: Redis
 ---
 
