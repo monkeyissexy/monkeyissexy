@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Redis Sentinel（一）入门"
-date:   2016-08-10 20:10:17 +0800
+date:   2016-08-06 14:10:17 +0800
 categories: Redis
 ---
 
@@ -256,14 +256,3 @@ repl_backlog_active:1
 
 
 
-### 细节
-
-failover 原理
-
-在sentinel中，master状态有三种
-
-- ok
-- sdown 主观下线
-- odown 客观下线
-
-工作太忙，有时间待续。。。
