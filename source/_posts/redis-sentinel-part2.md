@@ -69,7 +69,7 @@ sentinel只监听master的运行情况，master在sentinel中有三种状态:
 > 注：
 如果部署了5个sentinel集群，quorum设定为2，当master odown之后，将从这两个sentinel中，选择一个来执行failover，那么按照上面的说法，failover又必须得到大多数sentinel agree，即：必须至少需要3个或3个以上的sentinel同意，那么failover操作才能被授权执行；
 
-这里用到的`gossip`协议，没错，与`zookeeper`用的协议，接下来我会再写一篇关于gossip协议的文章；
+这里用到的`gossip`协议，没错，同`zookeeper`用的协议，接下来我会再写一篇关于gossip协议的文章；
 
 同时，gossip也决定了集群的部署结构：`2n+1 `（n>=1），所以redis和zookeeper官方要求一个健壮的高可用集群至少要部署3个实例，且为必须要部署到3个独立机器上；
 
