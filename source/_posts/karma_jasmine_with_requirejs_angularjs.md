@@ -16,12 +16,14 @@ tags:
 
 > 你要问我为什么突然会写前端的博文，因为公司近期安排的分享任务-angularjs ut，正好赶上了。。。其实和angularjs spa相关开发，我也做过一段时间。对此还是有些兴趣的，毕竟无论前端后端，技术思想基本是想通的。只是前端技术这两年发展的太迅猛，有点跟不上了。
 
+karma的网站上只有karma+requirejs的介绍，而我们公司是requirejs+angularjs架构的，无耐网上关于karma+requirejs+angularjs的集成介绍文档少之又少，我在集成的时候，也调试了很久才跑起来的。。。都是泪啊，所以今天写下这一篇，方便跟我一样的后来者。
+
+<!--more-->
+
 本文大致思路：
 - 相关工具的简单介绍；
 - 集成说明；
 - 提供一个Demo；
-
-karma的网站上只有karma+requirejs的介绍，而我们公司是requirejs+angularjs架构的，无耐网上关于karma+requirejs+angularjs的集成介绍文档少之又少，我在集成的时候，也调试了很久才跑起来的。。。都是泪啊，所以今天写下这一篇，方便跟我一样的后来者。
 
 
 ### 名词
@@ -34,7 +36,6 @@ karma的网站上只有karma+requirejs的介绍，而我们公司是requirejs+an
 - bower
 - npm
 
-<!--more-->
 
 ### 项目结构
 ![结构图](/images/directory_arc.png)
