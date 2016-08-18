@@ -7,7 +7,7 @@ categories: architecture
 
 ## 架构图
 
-![架构图](https://raw.githubusercontent.com/monkeyissexy/attachment/master/images/paymax.png)
+![架构图](/images/art_one.png)
 
 <!--more-->
 
