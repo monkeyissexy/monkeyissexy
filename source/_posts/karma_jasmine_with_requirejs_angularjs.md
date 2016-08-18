@@ -159,7 +159,7 @@ karma支持的浏览器有这些：
 
 这一部分主要说一下，如何将karma、jasmine、angularjs、requirejs给集成起来，让单元测试可以跑起来；
 
-如果不想看下面的配置，我这里还提供了一个Demo，download之后，执行几条简单命令，就可以将单元测试跑起来，项目托管在Github[`MonkeyIsSexy`](https://github.com/monkeyissexy/karma-requirejs-angularjs)上，大家可自行查阅，看完觉得有帮助，可以动动手，给我加star哦~^_^
+如果不想看下面的配置，我这里还提供了一个Demo，download之后，执行几条简单命令，就可以将单元测试跑起来，项目托管在Github[`MonkeyIsSexy`](https://github.com/monkeyissexy/karma-requirejs-angularjs)`https://github.com/monkeyissexy/karma-requirejs-angularjs`上，大家可自行查阅，看完觉得有帮助，可以动动手，给我加star哦~^_^
 
 #### 项目结构
 
@@ -554,7 +554,7 @@ define(['app'], function(app) {
 
 `$httpBackend.when(...).respond(...);` 这个写法是不是又跟mocktio很像呢，将某个http请求给mock了，这样当调用到这个http地址的时候，会按照期望的mock结果返回给调用者；
 
-Demo项目中，还有关于filter、directive的测试，基本类似，不再敖述了，需要的话可下载代码下来研究。Github[`MonkeyIsSexy`](https://github.com/monkeyissexy/karma-requirejs-angularjs)
+Demo项目中，还有关于filter、directive的测试，基本类似，不再敖述了，需要的话可下载代码下来研究。Github[`MonkeyIsSexy`](https://github.com/monkeyissexy/karma-requirejs-angularjs)`https://github.com/monkeyissexy/karma-requirejs-angularjs`
 
 #### 执行测试
 
