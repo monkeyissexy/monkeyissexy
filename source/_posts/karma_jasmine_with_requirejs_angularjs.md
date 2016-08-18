@@ -166,7 +166,7 @@ karma支持的浏览器有这些：
 先来看下最终的项目结构，好有个感觉
 ![结构图](/images/directory_arc.png)
 
-##### bower.json
+#### bower.json
 
 项目用到的angularjs等lib包，是通过[`bower`](https://bower.io/)工具来管理的，它是一个非常好用的，面向web的包管理工具。你自己写了个js类库，也可以将它发布到bower的官方类库下，这样别人就可以用啦！
 > Bower can manage components that contain HTML, CSS, JavaScript, fonts or even image files.
@@ -203,7 +203,7 @@ karma支持的浏览器有这些：
 
 如上，我们主要用到了三个依赖lib，对应的版本号也很清晰。
 
-##### package.json
+#### package.json
 
 项目中用到的karma、jasmine相关的组件，我们使用[`npm`](https://www.npmjs.com/)来管理。npm本身是作为nodejs的包管理器，而node又是由JavaScript编写的，所以现在越来越多的js类库也开始由npm来管理了，上面提到的bower.json中相关的三个依赖lib，也可以有npm来管理。
 > 出于自己的习惯，将项目本身依赖lib由bower管理，比如：angular等；其它与项目本身无关的lib，由npm管理，比如kama等；这里萝卜青菜各有所爱，无论你用了其中的哪一个，都是可以的。尽量不要从网上自己下载lib，再copy到项目中，这样不利于管理。
@@ -264,7 +264,7 @@ karma-requirejs-angularjs
 
 ```
 
-##### main.js
+#### main.js
 
 作为一个requirejs项目，我们首先需要配置`main.js`;
 
@@ -288,7 +288,7 @@ requirejs.config({
 
 `baseUrl: '/src'`，这个配置比较关键，它告诉requirejs，如果其它require module在`define(['app'],function(app){...})`依赖时，从这个目录下开始查找，如`app`，需要到src下查找`app.js`。
 
-##### app.js
+#### app.js
 下面，我们来看下`app.js`，这里定义了angular module，与一些以来配置，比如：controller、filters等等；
 
 ```javascript
@@ -317,7 +317,7 @@ define([
 
 好了，项目相关的配置就到这里，下面开始单元测试相关配置；
 
-##### karma.config.js
+#### karma.config.js
 这里就要开始讲到上面提到的karma工具了，上面我们使用`npm install`将karma所需要的依赖安装了，为了我们可以在terminal的任何地方执行karma命令，还需要安装一个`karma-cli`工具，安装方式如下：
 
 ```shell
@@ -395,7 +395,7 @@ module.exports = function(config) {
 
 说一下这里的files配置，一开始我想，所有的js通过app.js，让requirejs不都能加载进来吗？为什么还需要在这里加载呢，但是事实不是这样的。
 
-##### test-main.js
+#### test-main.js
 其次，我们还需要配置一个`test-main.js`，与`main.js`相对应，来告诉karma在跑单元测试的时候，从哪来取测试文件、以及测试用到的依赖从哪里获取；
 
 这一点也和java类似，一般单元测试也会有单独的config：
@@ -460,10 +460,10 @@ requirejs.config({
 原因是karma是通过启动webserver来加载上面配置的这些文件的，而webserver启动的context就是`/base`对应到项目的目录上，一定要配置上。
 
 
-### angular controller的测试
+### 测试举例
 将这些配置完成之后，下面终于可以开始写测试类了，一路长途跋涉啊
 
-##### userController.js
+#### userController.js
 先拿controller举例，在src/controller目录下创建一个`userController.js`
 
 ```javascript
@@ -479,7 +479,7 @@ requirejs.config({
 
 这个controller的逻辑很简单，text 和 users，text赋值为hello字符串，users在UserFactory中通过发送http请求获取；
 
-##### userFactory.js
+#### userFactory.js
 src/factory/userFactory.js如下
 
 ```javascript
@@ -495,7 +495,7 @@ src/factory/userFactory.js如下
 
 下面是我们的主角上场了，测试类：
 
-##### userControllerSpec.js
+#### userControllerSpec.js
 
 位于test/controller/userControllerSpec.js
 
@@ -619,7 +619,8 @@ FAILED TESTS:
 至此，整个集成配置就讲完了。。。写着写着就发现，怎么写的这么繁琐啊。。
 
 
-### 实际使用
+### 集成jenkins
+
 
 实际项目使用中，我们可以结合jenkins一起来用；
 
