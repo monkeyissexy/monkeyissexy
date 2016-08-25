@@ -614,25 +614,97 @@ FAILED TESTS:
 
 效果还是比较明显的。
 
-同时，在test目录下面，会多出一个coverage文件夹，下面有一个index.html就是测试报告了；这个是我们在`karma.conf.js`中配置的`coverageReporter`;
+同时，在test目录下面，会多出一个coverage文件夹，下面有一个index.html文件，这个是代码测试覆盖率的报告（不同于测试报告）；这个是我们在`karma.conf.js`中通过配置`coverageReporter`来生成的;
 
-至此，整个集成配置就讲完了。。。写着写着就发现，怎么写的这么繁琐啊。。
+这个报告长这样子
+![代码覆盖率](/images/coverageReporter.png)
+
+至此，整个集成配置就讲完了。。。
 
 
 ### 集成jenkins
 
-
 实际项目使用中，我们可以结合jenkins一起来用；
+> 集成jenkins的代码demo也已准备了一份，有需要可以自行下载：[https://github.com/monkeyissexy/karma-requirejs-angularjs](https://github.com/monkeyissexy/karma-requirejs-angularjs)  branch `jenkins-ci`
 
-目前，我们前端项目使用的打包、压缩工具是grunt，同时在jenkins的extra shell中配置了grunt命令；
+目前，我们的jenkins部署在linux服务器上，但是karma的执行，需要打开浏览器，而linux服务器上没有，所以修改运行的浏览器，将js代码运行在`PhantomJs`上面，它是一个不需要界面的浏览器，基于webkit；
 
-我们只需要把grunt task改良一下即可，在里面加入一个ut task，这样每次在执行grunt的时候就会跑单元测试啦！
+jenkins上，我们可以安装各种plugin，下面我会演示如何把karma生成的测试报告集成到jenkins的测试报告插件中。
 
-但是对于跑出的结果文件，也就是coverage目录下的那个index.html，我们需要告诉jenkins来获取它；
+接下来，我主要已这个顺序来讲：
 
-当然，如果想要在jenkins上运行，还有要改良的地方，因为它需要打开浏览器，而linux服务器上没有，所以修改运行的浏览器，将js代码运行在`PlatformJs`上面，它是一个不需要界面的浏览器，只需要安装一个karma插件`npm install karma-platformjs-launcher --save-dev`，然后将karma.conf.js中的`browsers`设置为`PlatformJs即可`。
+- 安装PhantomJS（幽灵）及karma phantomjs插件
+- 配置karma运行于PlantomJS浏览器
+- 安装jenkins插件
+- 安装karma junit插件，并配置karma生成测试报告
+- 配置jenkins获取karma测试报告
+- 集成展示
 
-不过，这个platformjs-launcher由于包的原因，一直无法安装不上，接下来还需解决下。
+
+#### 安装PhantomJS相关支持
+安装一个karma插件`npm install karma-phantomjs-launcher --save-dev`（ps：安装这个插件之前，要先安装[PhantomJS](http://phantomjs.org/)浏览器哦，我之前没安装这个，插件死活安装不上。。），然后将karma.conf.js中的`browsers`设置为`PhantomJs`。
+
+
+#### 安装jenkins插件
+这里我用到的插件名称为[Cobertura](https://wiki.jenkins-ci.org/display/JENKINS/Cobertura+Plugin)
+
+安装截图我就不展示了，大致描述下，首页点击 Manage Jenkins --> Manage Plugins，然后点击available tab页签，在右上角的Filter框中输入`Cobertura`，勾选结果点击右下角`Install without restart`，等待进度条稍等片刻，完成安装；
+
+
+#### 安装karma junit插件并配置
+
+下面，我们来安装测试报告生成工具，`npm install karma-junit-reporter --save-dev`
+
+安装完毕之后，进入karma.conf.js进行配置：
+
+```javascript
+	// test results reporter to use
+	// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage', 'mocha'
+    reporters: ['mocha','junit', 'coverage'],
+    
+    junitReporter: {
+        outputDir : 'test/testReport/'
+    },
+    
+    // optionally, configure the reporter
+    coverageReporter: {
+      type : 'html',
+      dir : 'test/coverage/'
+    },
+```
+如上，我们在reporters中添加了`junit`，与之对应，还添加了一个`junitReporter`配置。`coverage`是我们上面演示的时候配置的，没有变化。
+
+#### 在jenkins上配置karma测试报告
+
+下面这两个项在`Post-build Actions`中配置，主要告诉jenkins在执行完build之后，去哪个位置获取build生产的测试报告、测试覆盖率的文件；
+
+**Publish Cobertura Coverage Report** 这个是告诉jenkins从哪获取覆盖率的报告文件，我们demo项目生成的地址如下：`**/test/coverage/**/*.xml`
+
+ **Publish JUnit test result report** 这个是告诉jenkins从哪获取单元测试的报告文件，我们demo项目生成的地址如下：`test/testReport/*.xml`
+
+![jenkins_coverage](/images/jenkins_coverage.png)
+
+#### 测试&效果图
+
+> ps：在测试过程中发现，如果某一次build执行单元测试报错了，那么就只会生产单元测试的报告，不会生产覆盖率的报告了。
+这个时候，我们就可以点击build来测试了，下面是效果图：
+
+进入jenkins item首页，首先会有一个覆盖率和测试结果的概览趋势：
+
+![jenkins1](/images/jenkins1.png)
+
+若单元测试出现错误，则如下：
+
+![jenkins2](/images/jenkins2.png)
+
+若单元测试没有错误，则如下：
+
+![jenkins4](/images/jenkins4.png)
+
+测试代码覆盖率，如下：
+
+![jenkins3](/images/jenkins3.png)
+
 
 
 
