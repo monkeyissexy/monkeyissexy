@@ -9,6 +9,7 @@ tags:
 	- requirejs
 	- karma
 	- jasmine
+	- jenkins
 ---
 
 ### 前言
@@ -25,6 +26,7 @@ tags:
 - 相关工具的介绍；
 - 集成配置说明；
 - 提供一个完整可运行的Demo；
+- 配合jenkins持续集成；
 
 好了，让我们开始吧~
 
