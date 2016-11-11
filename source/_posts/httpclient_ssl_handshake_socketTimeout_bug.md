@@ -5,8 +5,6 @@ date:   2016-11-11 17:10:17 +0800
 categories: httpclient
 ---
 
-# httpclient ssl handshake socketTimeout bug 分析解决过程
-
 ## 问题现象：
 
 订单状态更新任务卡主，不执行了，导致bmcp订单状态无法更新，造成用户订单状态更新延迟；
@@ -28,6 +26,8 @@ root     22780 24809  0 11月07 ?      00:12:15 /usr/bin/java -Dfile.encoding=UT
 ### 查看gc情况
 
 使用jstat检查gc情况，主要看fullgc频率次数是否异常，正常
+
+<!--more-->
 
 ```
 [root@payright01 ~]# jstat -gcutil 22780 1000
