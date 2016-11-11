@@ -389,3 +389,9 @@ if (connectTimeout > 0 && sock.getSoTimeout() == 0) {
 终于水落石出了！以后这个版本不要用啦！
 
 总结下：解决问题的过程一定是很曲折的，但结果不会太坏。
+
+吐槽一下：
+
+- apache httpclient release note 一点都不规范，解决的上面的bug号1478都不写
+https://archive.apache.org/dist/httpcomponents/httpclient/RELEASE_NOTES-4.3.x.txt
+- 代码写的也不规范，一个方法几百行、方法参数还有9个的；
