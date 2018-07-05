@@ -245,10 +245,10 @@ mathjax:
 baidu_analytics: e3eaf9cb0e468d1de706431e5cafa74f
 
 # Duoshuo ShortName
-duoshuo_shortname: monkeyissexy
+# duoshuo_shortname: monkeyissexy
 
 # Disqus
-#disqus_shortname:
+disqus_shortname:monkeyissexy
 
 # Baidu Share
 # Available value:
